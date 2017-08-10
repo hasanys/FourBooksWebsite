@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { HttpModule } from '@angular/http';
 
 import { DataAccessService } from './data-access.service'
 
@@ -14,7 +15,7 @@ import { DataAccessService } from './data-access.service'
     FooterBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpModule
   ],
   providers: [ DataAccessService ],
   bootstrap: [AppComponent]

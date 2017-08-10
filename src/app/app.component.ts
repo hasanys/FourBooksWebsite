@@ -7,15 +7,17 @@ import { DataAccessService } from './data-access.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  constructor(private dataService:DataAccessService) {
+
+  constructor( private dataService:DataAccessService ) {
 	
   }
-  
-  someProperty:string = '';
-  
+  result:Array<Object>; 
+
   ngOnInit() { 
-	this.someProperty = this.dataService.myData()
+    console.log("Getting data now:")
+	this.dataService.myData().then(result => this.result = result);
+	
+	
   }
   title = 'app';
   
