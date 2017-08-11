@@ -1,11 +1,6 @@
 .backdrop {
-	background-color: #b2fff0;
+	background-color: #4cffdb;
 	background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
-	background-repeat: repeat;
-	
+	background-repeat: repeat-y;
 	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
-.btn-height { 
-	height: 65px
 }

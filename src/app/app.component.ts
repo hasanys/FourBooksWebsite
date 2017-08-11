@@ -4,7 +4,7 @@ import { DataAccessService } from './data-access.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './bootstrap/bootstrap.css']
 })
 export class AppComponent {
 
@@ -20,6 +20,4 @@ export class AppComponent {
 	
   }
   title = 'app';
-  
-  
 }
