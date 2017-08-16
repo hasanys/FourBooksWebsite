@@ -1,3 +1,44 @@
-<p>
-  book-main works!
+<h1> {{ title.name }} </h1>
+
+<div *ngFor="let s of description.text.split('\r\n')">
+      {{s}} <br/>
+</div> 
+
+&nbsp;
+
+<h2> Part 1 : AL-’USUL (principles)</h2>
+<p> This part of the book consists of Ahadith on the principles of beliefs and it is called ’Usul al-Kafi 
 </p>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l">Title English</th>
+    <th class="tg-yw4l">Title Arabic</th>
+    <th class="tg-yw4l">?</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let titles of titles_1; index as i; odd as isOdd; even as isEven" > 
+		<td *ngIf="isOdd" class="tg-j2zy"> {{ titles.english }} </td>
+		<td *ngIf="isOdd" class="tg-j2zy"> {{ titles.arabic }} </td>
+		<td *ngIf="isOdd" class="tg-j2zy"> {{ titles.pages }}</td>
+		<td *ngIf="isEven" class="tg-yw4l"> {{ titles.english }} </td>
+		<td *ngIf="isEven" class="tg-yw4l"> {{ titles.arabic }}</td>
+		<td *ngIf="isEven" class="tg-yw4l"> {{ titles.pages}} </td>		
+	</tr>
+	
+  </tbody>
+  
+</table>
+
+<h2> PART 2 : AL-FURU </h2>
+<p> This part consists of Ahadith on Islamic practical laws such as<br>
+The acts of worship (‘Ibadat)<br>
+Business transactions (mu‘amalat)<br>
+Judicial laws (al-Qada’)<br>
+</p>
+
+<h2> PART 3 : AL-RAWDA </h2>
+<p>
+This part consists of miscellaneous Ahadith of both the ’Usul and Furu‘ of al-Kafi. The topics are not arranged and organized as in the other volumes. The chapters are not in alphabetical order of Ahadith or narrators.<br>
+This part, al-Rawdah (the Garden of al-Kafi,) was printed in Tehran 1303/1886 with other books in one volume.
+</p>
+<br>

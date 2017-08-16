@@ -14,7 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 const appRoutes: Routes = [
     
 
-  { path: 'details', component: BookMainComponent },
+  { path: 'details/:name', component: BookMainComponent },
   { 
         path: '', 
 		component: HomePageComponent

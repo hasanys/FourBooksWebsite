@@ -30,10 +30,20 @@ body {
     border-bottom-left-radius: 4px;
 }
 
+.search-bar {
+	
+}
+
+.top-nav-bar {
+	margin-left: 20%;
+}
+
 @media screen and (min-width: 768px) {
     #adv-search {
         width: 500px;
         margin: 0 auto;
+		margin-top: 7px;
+		margin-left: 53%;
     }
     .dropdown.dropdown-lg {
         position: static !important;

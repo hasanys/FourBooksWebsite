@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataAccessService } from '../data-access.service'
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-main',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookMainComponent implements OnInit {
 
-  constructor() { }
+  titles_1:Array<Object>; 
+  description;
+  title;
+  constructor( private dataService:DataAccessService, private route: ActivatedRoute, private router: Router ) { }
 
   ngOnInit() {
+	  this.route.params.subscribe((title) => this.title = title);
+      console.log(this.title)
+	  this.dataService.getAlKafiChapterNamesPart1().then(titles_1 => this.titles_1 = titles_1);
+	  this.dataService.getAlKafiDescription().then(description => this.description = description);
+	  
   }
 
 }

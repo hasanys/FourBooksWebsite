@@ -10,8 +10,10 @@ export class DataAccessService {
 
   constructor(private http: Http) { }
   public data;
-  url = 'http://localhost:8080/testserver/index.php';
-  
+  titles_url = 'http://localhost:8080/testserver/get_title.php?';
+  desc_url = 'http://localhost:8080/testserver/get_title.php?';
+  url = 'http://localhost:8080/testserver/get_title.php?';
+
   myData() : Promise<Array<any>> { 
 	
 	return this.http.get(this.url)
@@ -22,4 +24,21 @@ export class DataAccessService {
 					.toPromise();
   }
   
+  getAlKafiChapterNamesPart1() : Promise<Array<any>> { 
+	return this.http.get(this.titles_url + 'book=al-kafi&part=1')
+					.map((res) => {
+						// some manipulation
+						return res.json()
+					})
+					.toPromise();
+  }
+  
+  getAlKafiDescription() : Promise<Array<any>> { 
+	return this.http.get(this.titles_url + 'book=al-kafi&part=-1')
+					.map((res) => {
+						// some manipulation
+						return res.json()
+					})
+					.toPromise();
+  }
 }

@@ -14,8 +14,7 @@ export class AppComponent {
   result:Array<Object>; 
 
   ngOnInit() { 
-    console.log("Getting data now:")
-	this.dataService.myData().then(result => this.result = result);
+    //this.dataService.myData().then(result => this.result = result);
 	
 	
   }
