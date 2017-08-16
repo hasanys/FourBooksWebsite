@@ -1,9 +1,17 @@
 .tg  {width:100%; border-collapse:collapse;border-spacing:0;border-color:#aaa;border-width:1px;border-style:solid;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;}
-.tg .tg-j2zy{background-color:#FCFBE3;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
+.tg .tg-j2zy{text-align: center; background-color:#FCFBE3;vertical-align:top}
+.tg .tg-yw4l{text-align: center; vertical-align:top}
 
 h1 {text-align:center;}
 h2 {text-align:center;}
 
+.clickable {cursor: pointer;}
+
+.table-hover tbody tr:hover td {
+    background: #ffff99;
+}
+ tr:hover {
+          background-color: #ffff99;
+        }

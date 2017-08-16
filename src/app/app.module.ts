@@ -10,11 +10,13 @@ import { DataAccessService } from './data-access.service';
 import { BookMainComponent } from './book-main/book-main.component'
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import { BookViewComponent } from './book-view/book-view.component';
 
 const appRoutes: Routes = [
     
 
   { path: 'details/:name', component: BookMainComponent },
+  { path: 'view/:name/:id', component: BookViewComponent },
   { 
         path: '', 
 		component: HomePageComponent
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     TopNavBarComponent,
     FooterBarComponent,
     BookMainComponent,
-    HomePageComponent
+    HomePageComponent,
+    BookViewComponent
   ],
   imports: [
 	RouterModule.forRoot(

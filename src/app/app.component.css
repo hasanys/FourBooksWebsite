@@ -1,11 +1,17 @@
 .backdrop {
-	background-color: #b2fff0;
+	
+	/*
 	background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
 	background-repeat: repeat;
 	margin-left: -15px;
 	margin-right: -15px;
 	height:100%;
-	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+	*/
+
+
+    /* Center and scale the image nicely */
+
+   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .btn-height { 
@@ -13,7 +19,15 @@
 
 }
 
-.main-container {
+.content {
+	  min-height: 100%;
+  /* equal to footer height */
+    margin-bottom: -142px; 
+
 	margin-left: 13%;
 	margin-right: 13%;
+}
+.content:after {
+  content: "";
+  display: block;
 }
