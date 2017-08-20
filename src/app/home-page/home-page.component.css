@@ -1,3 +1,11 @@
 .btn-height { 
 	height: 65px
 }
+.hadith-container {
+	background-color: rgba(255, 238, 235, 0.70);
+	padding: 20px;
+	box-shadow: 10px 10px 5px #666666;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+.amiri{font-family: 'Amiri', serif;}

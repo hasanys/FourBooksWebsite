@@ -18,11 +18,11 @@ export class BookMainComponent implements OnInit {
 
   ngOnInit() {
 	  this.route.params.subscribe((title) => this.title = title);
-      console.log(this.title)
-	  this.dataService.getAlKafiChapterNamesPart1().then(titles_1 => this.titles_1 = titles_1);
-  	  this.dataService.getAlKafiChapterNamesPart2().then(titles_2 => this.titles_2 = titles_2);
 
-	  this.dataService.getAlKafiDescription().then(description => this.description = description);
+	  this.dataService.getAlKafiChapterNames(-1).then(description => this.description = description); //Using part=-1 for description
+	  this.dataService.getAlKafiChapterNames(1).then(titles_1 => this.titles_1 = titles_1);
+  	  this.dataService.getAlKafiChapterNames(2).then(titles_2 => this.titles_2 = titles_2);
+
 	  
   }
 
