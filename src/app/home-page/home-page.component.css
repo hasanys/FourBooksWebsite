@@ -9,3 +9,26 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
 .amiri{font-family: 'Amiri', serif;}
+
+img {
+  max-width: 100% ;
+  width: 40%;
+  height: 40%;
+    display: block;
+    margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+img {
+  max-width: 100% ;
+  width: auto;
+  height: auto;
+}
+#second-col {
+  margin-top: 20px;
+}
+}

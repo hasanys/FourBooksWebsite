@@ -13,6 +13,7 @@ export class DataAccessService {
   titles_url = 'http://fourshiabooks.com/server/get_title.php?';
   content_url = 'http://fourshiabooks.com/server/get_content.php?';
   title_content_url = 'http://fourshiabooks.com/server/get_title_content_id.php?';
+  contact_url = 'http://fourshiabooks.com/server/sendEmail.php?';
   
   getAlKafiChapterNames(part) : Promise<Array<any>> { 
 	return this.http.get(this.titles_url + 'book=al-kafi&part=' + part)
@@ -39,5 +40,9 @@ export class DataAccessService {
 						return res.json()
 					})
 					.toPromise();
+  }
+  
+  sendEmail(model) : void {
+	  console.log(model)
   }
 }

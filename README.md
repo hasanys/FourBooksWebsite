@@ -1,39 +1,28 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Bare](http://startbootstrap.com/template-overviews/bare/)
+# TheFourBooks
 
-[Bare](http://startbootstrap.com/template-overviews/bare/) is a bare HTML starter template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features predefined file paths for Bootstrap and jQuery, so you can quickly create Bootstrap websites.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-XAMPP with Apache & MySQL
+## Development server
 
-Go to: http://localhost:8080/phpmyadmin/index.php to manage your databases
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Then connect to the database from python 3.6.2 with:
-	import pymysql
-	connection = pymysql.connect(host='localhost', user='root', db='test')
-	
-All php files related to API/server go in C:\xampp\htdocs\testserver
+## Code scaffolding
 
-https://bootsnipp.com/tags/search
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-## Getting Started
+## Build
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/bare/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-bare.git`
-* Fork the repo
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Bugs and Issues
+## Running unit tests
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-bare/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/bare/).
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Creator
+## Running end-to-end tests
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+## Further help
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-bare/blob/gh-pages/LICENSE) license.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

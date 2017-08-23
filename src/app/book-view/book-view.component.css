@@ -17,12 +17,27 @@
     padding-bottom: 8px;
 	
 }
+
+.intro-text {
+	font-family: 'Nexa' !important;
+    font-weight: 600 !important;
+    font-style: normal;	
+}
+
 p {
     display: block;
+	text-align: justify;
+	font-size: 16px;
+	font-family: serif;
+    color: #313131;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
+}
+
+.nav-text {
+	font-size: 12px;
 }
 
 .normal-text {
@@ -30,6 +45,8 @@ p {
 	font-size: 16px;
 	font-family: serif;
     color: #313131;
+	line-height: 1.35;
+	font: 14px/2 Georgia, serif;
 }
 
 .header-text {

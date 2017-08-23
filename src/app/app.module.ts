@@ -5,24 +5,29 @@ import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataAccessService } from './data-access.service';
 import { BookMainComponent } from './book-main/book-main.component'
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BookViewComponent } from './book-view/book-view.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
     
 
   { path: 'details/:name', component: BookMainComponent },
   { path: 'view/:name/:id', component: BookViewComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
   { 
         path: '', 
 		component: HomePageComponent
-    },
+  },
   { path: '**', redirectTo: '' }
-//  { path: 'results', component: CrisisListComponent }
+
   ]
 @NgModule({
   declarations: [
@@ -31,14 +36,18 @@ const appRoutes: Routes = [
     FooterBarComponent,
     BookMainComponent,
     HomePageComponent,
-    BookViewComponent
+    BookViewComponent,
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
 	RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
     ),
-    BrowserModule, HttpModule
+    BrowserModule, HttpModule,
+        FormsModule,
+        ReactiveFormsModule
   ],
   exports: [ RouterModule ],
   providers: [ DataAccessService ],

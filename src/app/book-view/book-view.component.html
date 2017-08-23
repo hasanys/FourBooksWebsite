@@ -1,10 +1,9 @@
-	<div *ngIf="content_title.chapters?.length > 1" class="col-md-1">
+	<div *ngIf="content_title?.chapters?.length > 1" class="col-md-1">
             <div class="sidebar-nav-fixed affix">
                 <div class="well">
                     <ul class="nav ">
-                        <li class="nav-header">Chapter...</li>
                         <li class="active" *ngFor="let c of content_title.chapters; index as i">
-						<a [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter {{ i  + 1 }}</a>
+						<a class="nav-text" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter {{ i  + 1 }}</a>
                         </li>
                     </ul>
                 </div>
@@ -13,10 +12,18 @@
             <!--/sidebar-nav-fixed -->
         </div>
 		
-<h1> {{ content_title.title }} </h1>
-<h2> {{ content_title.text }} </h2>
+<h1 *ngIf="id.id != 1"> {{ content_title?.title }} </h1>
+<h2 *ngIf="id.id != 1"> {{ content_title?.text }} </h2>
 
-<div id="name-wrapper" *ngFor="let c of content; index as i">
+<div *ngIf="id.id == 1">
+	<div id="name-wrapper"  *ngFor="let c of content; index as i">
+		<h1> {{ c.header }}</h1>
+		<p class="normal-text intro-text "> {{ c.text }} </p>
+	</div>
+</div>
+
+<div *ngIf="id.id != 1">
+<div id="name-wrapper"  *ngFor="let c of content; index as i">
 <section [id]="c.chapter" *ngIf="content_title.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)"><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
 <div class="hadith-container" > 
 
@@ -27,10 +34,10 @@
 <span class="subtext">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> <br />
 </div>
 </div>
+</div>
 
 <script>
-function myFunction() {
-    var x = document.URL;
-    document.getElementById("demo").innerHTML = x;
-}
+$(function() {
+    console.log( "ready!" );
+});
 </script>
