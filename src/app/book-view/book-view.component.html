@@ -1,9 +1,11 @@
 	<div *ngIf="content_title?.chapters?.length > 1" class="col-md-1">
             <div class="sidebar-nav-fixed affix">
-                <div class="well">
+                <div id="collapsable" class="well collapsable-div">
                     <ul class="nav ">
                         <li class="active" *ngFor="let c of content_title.chapters; index as i">
-						<a class="nav-text" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter {{ i  + 1 }}</a>
+						<span class="nav-items"> <a class="nav-text" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter {{ i  + 1 }}</a> 
+						<a id="chapter-names" class="nav-text-name-hidden nav-text chapter-name" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)"> : {{c.chapter_name}} </a> 
+						</span><br/><br/>
                         </li>
                     </ul>
                 </div>
@@ -22,6 +24,16 @@
 	</div>
 </div>
 
+<div *ngIf="content?.length == 0">
+<div  class="coming-soon">
+	<div class="inset-text-effect">Coming Soon...</div>
+<link async href="http://fonts.googleapis.com/css?family=Aladin" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+
+</div>
+<h4 style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>
+
+</div>
+
 <div *ngIf="id.id != 1">
 <div id="name-wrapper"  *ngFor="let c of content; index as i">
 <section [id]="c.chapter" *ngIf="content_title.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)"><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
@@ -35,9 +47,3 @@
 </div>
 </div>
 </div>
-
-<script>
-$(function() {
-    console.log( "ready!" );
-});
-</script>

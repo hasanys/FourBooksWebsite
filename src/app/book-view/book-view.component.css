@@ -22,6 +22,7 @@
 	font-family: 'Nexa' !important;
     font-weight: 600 !important;
     font-style: normal;	
+	font-size: 15px !important;
 }
 
 p {
@@ -86,6 +87,60 @@ h3 {
 
 .sidebar-nav-fixed {
 	width:12%;
-	
 	margin-left: -14%;
+}
+.clear { clear:both; }
+
+.coming-soon {
+	width: 30%;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+.coming-soon {	
+	margin: 0 auto;
+	width:100%;
+	transform: translateX(-20px);
+	padding-top:50%;
+}
+}
+.chapter-names {
+	
+}
+.nav-items {
+	margin-top:5px;
+	padding-top:5px;
+}
+.nav-text-name-hidden {
+	display:none;
+}
+
+.collapsable-div {
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;	
+}
+.hover{
+	width: 300%;
+	background-color: green;
+}
+
+.inset-text-effect {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 65px/1 "Aladin", Helvetica, sans-serif;
+  color: rgba(48,48,48,1);
+  text-align: center;
+  text-transform: normal;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+  text-shadow: 1px 1px 0 rgba(140,140,140,0.6) , -1px -1px 1px rgba(0,0,0,0.67) ;
 }
