@@ -14,6 +14,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
     
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     ),
     BrowserModule, HttpModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+		ToastModule.forRoot(),
+		BrowserAnimationsModule
   ],
   exports: [ RouterModule ],
   providers: [ DataAccessService ],
