@@ -18,6 +18,7 @@ export class DataAccessService {
   title_content_url = 'http://fourshiabooks.com/server/get_title_content_id.php?';
   contact_url = 'http://fourshiabooks.com/server/sendEmail.php?';
   email_url = 'http://fourshiabooks.com/server/send_email.php';
+  hadith_url = 'http://fourshiabooks.com/server/get_hadith.php?';
   
   getAlKafiChapterNames(part) : Promise<Array<any>> { 
 	return this.http.get(this.titles_url + 'book=al-kafi&part=' + part)
@@ -28,13 +29,12 @@ export class DataAccessService {
 					.toPromise();
   }
   
-  getAlKafiContent(id, chapter, hadith, number) : Promise<Array<any>> { 
-	return this.http.get(this.content_url + 'book=al-kafi&id=' + id)
+  getAlKafiContent(id) : Promise<Array<any>> { 
+		return this.http.get(this.content_url + 'book=al-kafi&id=' + id)
 					.map((res) => {
 						// some manipulation
 						return res.json()
-					})
-					.toPromise();
+					}).toPromise();
   }
 
   getAlKafiContentName(id) : Promise<Array<any>> { 
@@ -46,13 +46,30 @@ export class DataAccessService {
 					.toPromise();
   }
   
-    private extractData(res: Response) {
-		
-	let body = res.json();
-	console.log(body)
-        return body.data || {};
-    }  
-	
+  getHadith(book, content, chapter, number, hadith) : Promise<Array<any>> {
+	  //Book = Al-Kafi
+	  //Content = 4 (eg: The book on blah blah blah)
+	  //Chapter = 2
+	  //Number = 46
+	  //OR
+	  //Book = Al-Kafi
+	  //Hadith = 1046
+		if (hadith == -1) {
+	  	return this.http.get(this.hadith_url + 'book=' + book + "&content_id=" + content + "&chapter=" + chapter + "&number=" + number)
+					.map((res) => {
+						// some manipulation
+						return res.json()
+					}).toPromise();
+		}
+		else {
+	  	return this.http.get(this.hadith_url + 'book=' + book + "&hadith=" + hadith)
+					.map((res) => {
+						// some manipulation
+						return res.json()
+					}).toPromise();
+		}
+
+  }
 	private handleErrorPromise (error: Response | any) {
 		console.error(error.message || error);
 		return Promise.reject(error.message || error);
@@ -69,5 +86,12 @@ export class DataAccessService {
 				handleData(data);
 			}
 		});
+	}
+	
+	convertBookName(name) : string {
+		if (name === "al-kafi" || name === "kafi")
+			return "Kitab Al-Kafi";
+		else 
+			return "";
 	}
 }

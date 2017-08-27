@@ -22,9 +22,6 @@ export class ContactComponent implements OnInit {
 		this.toastr.setRootViewContainerRef(vcr);
 	} // form builder simplify form initialization
 
-
-	
-	
     save(model: User, isValid: boolean) {
         this.submitted = true; // set form submit to true
 		
