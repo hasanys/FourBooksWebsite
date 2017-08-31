@@ -1,14 +1,28 @@
-/* Sticky footer styles
--------------------------------------------------- */
 
 .footer {
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	text-align: center;
+	font: normal 14px sans-serif;
 
-  /* Set the fixed height of the footer here */
-    height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  background-color: #222;
+	padding: 15px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 35px;
+}    
+
+.footer-links {
+	
+	list-style: none;
+	font-weight: bold;
+	color:  #bab8b8;
+	margin-top: -5px;
 }
-html, body {
-    height: 100%;
+.footer-links a{
+	display:inline-block;
+	text-decoration: none;
+	color: inherit;
 }
