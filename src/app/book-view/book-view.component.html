@@ -1,3 +1,4 @@
+<!-- SIDE BAR -->
 	<div *ngIf="content_title?.chapters?.length > 1" class="col-md-1">
             <div class="sidebar-nav-fixed affix">
                 <div id="collapsable" class="well collapsable-div">
@@ -14,44 +15,62 @@
             <!--/sidebar-nav-fixed -->
         </div>
 		
-<h1 *ngIf="id.id != 1"> {{ content_title?.title }} </h1>
-<h2 *ngIf="id.id != 1"> {{ content_title?.text }} </h2>
+<!-- TITLE -->
+<h1 *ngIf="input_data.id != 1"> {{ content_title?.title }} </h1>
+<h2 *ngIf="input_data.id != 1"> {{ content_title?.text }} </h2>
 
-<div *ngIf="id.id == 1">
+<!-- LOADING SPINNER -->
+<div class="spinner" *ngIf="!content">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+
+<!-- INTRO TEXT -->
+<div *ngIf="input_data.id == 1">
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
 		<h1> {{ c.header }}</h1>
 		<p class="normal-text intro-text "> {{ c.text }} </p>
 	</div>
 </div>
 
+<!-- COMING SOON TEXT -->
 <div *ngIf="content?.length == 0">
-<div  class="coming-soon">
-	<div class="inset-text-effect">Coming Soon...</div>
-<link async href="http://fonts.googleapis.com/css?family=Aladin" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
-
+	<div  class="coming-soon">
+		<div *ngIf="!input_data.query" class="inset-text-effect">Coming Soon...</div>
+		<div *ngIf="input_data.query" class="inset-text-effect">No Results Found...</div>
+		<link async href="http://fonts.googleapis.com/css?family=Aladin" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+	</div>
+	<h4 *ngIf="!input_data.query" style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>
 </div>
-<h4 style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>
 
+<!-- SEARCH RESULTS HEADING -->
+<div *ngIf="input_data.query && content?.length > 0">
+	<h2> Search Results </h2>
+	<p> Displaying{{ content?.length }} results </p>
 </div>
 
-<div *ngIf="id.id != 1">
+<!-- MAIN CONTENT -->
+<div *ngIf="!input_data.id || input_data.id != 1">
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
-		<section [id]="c.chapter" *ngIf="content_title.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)"><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
-		<div class="hadith-container" > 
+		<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
 
+		<div class="hadith-container" > 
 			<span class="nar-text"> {{ c.narrator }}</span><br /><br />
 			<div class="normal-text" *ngFor="let s of c.text.split('\n')">
 				  {{s}} <br/> 
 			</div> 
 			<div>
-				<a class="subtext" style="float:left" (click)="open_module('localhost:4200/hadith/' + id.name + '/' + id.id + '/' + c.chapter + '/' + c.number)">Share... </a>
+				<a class="subtext" style="float:left" (click)="open_module('http://www.fourshiabooks.com/hadith/' + input_data.name + '/' + input_data.id + '/' + c.chapter + '/' + c.number)">Share... </a>
 				<span class="subtext" style="float:right">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> 
 			</div><br />
 		</div>
 	</div>
 </div>
 
-<!-- The Modal -->
+<!-- SHARE POPUP MODAL -->
 <div id="myModal" class="modal">
 
 	<!-- Modal content -->

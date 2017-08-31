@@ -38,9 +38,10 @@ export class ContactComponent implements OnInit {
 			this.dataService.sendEmail(model, function(output) { 
 				var res = JSON.parse(output); 
 				
-				if (res['status'] === "SUCCESS")
+				if (res['status'] === "SUCCESS") {
+					console.log(this.submitted)
 					console.log("Successfully saved email data")//this.toastr.success('Thank you for submitting your feedback!', 'Email Sent');
-				else
+				}else
 			        console.log("message saving error: " + res['message'])//this.toastr.error(res['message'], 'Error');
 			});
 		}

@@ -16,20 +16,19 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HadithViewComponent } from './hadith-view/hadith-view.component';
 
 const appRoutes: Routes = [
     
-  { path: 'hadith/:book/:content/:chapter/:number', component: HadithViewComponent },
-    { path: 'hadith/:book/:hadith', component: HadithViewComponent },
+  { path: 'hadith/:book/:content/:chapter/:number', component: BookViewComponent }, //Hadith View
+  { path: 'hadith/:book/:hadith', component: BookViewComponent }, // Hadith View
+  { path: 'results/:book/:by/:query', component: BookViewComponent }, // Search Results
+  { path: 'results/:query', component: BookViewComponent },  //Search Results
+  { path: 'view/:name/:id', component: BookViewComponent },  //OG
+  
   { path: 'details/:name', component: BookMainComponent },
-  { path: 'view/:name/:id', component: BookViewComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { 
-        path: '', 
-		component: HomePageComponent
-  },
+  { path: '', component: HomePageComponent },
   { path: '**', redirectTo: '' }
 
   ]
@@ -42,8 +41,7 @@ const appRoutes: Routes = [
     HomePageComponent,
     BookViewComponent,
     ContactComponent,
-    AboutComponent,
-    HadithViewComponent
+    AboutComponent
   ],
   imports: [
 	RouterModule.forRoot(

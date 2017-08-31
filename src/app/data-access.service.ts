@@ -19,6 +19,7 @@ export class DataAccessService {
   contact_url = 'http://fourshiabooks.com/server/sendEmail.php?';
   email_url = 'http://fourshiabooks.com/server/send_email.php';
   hadith_url = 'http://fourshiabooks.com/server/get_hadith.php?';
+  search_url = 'http://fourshiabooks.com/server/get_results.php?';
   
   getAlKafiChapterNames(part) : Promise<Array<any>> { 
 	return this.http.get(this.titles_url + 'book=al-kafi&part=' + part)
@@ -94,4 +95,21 @@ export class DataAccessService {
 		else 
 			return "";
 	}
+	
+	searchQuery(query) :  Promise<Array<any>> {
+		return this.http.get(this.search_url + 'query=' + query)
+					.map((res) => {
+						// some manipulation
+						return res.json()
+					}).toPromise();		
+	}
+	
+	searchExactQuery(book, by, query ) :  Promise<Array<any>> {
+		return this.http.get(this.search_url + 'query=' + query + '&book=' + book + '&by=' + by)
+					.map((res) => {
+						// some manipulation
+						console.log(res.json())
+						return res.json()
+					}).toPromise();		
 }
+	}

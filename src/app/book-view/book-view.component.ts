@@ -10,7 +10,8 @@ declare var $: any;
   styleUrls: ['./book-view.component.css', '../bootstrap/bootstrap.css']
 })
 export class BookViewComponent implements OnInit {
-  id;
+  input_data;
+  title;
   private var2: string;
   content:Array<Object>;
   content_title;
@@ -21,9 +22,35 @@ export class BookViewComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-	this.route.params.subscribe((id) => this.id = id);
-	this.dataService.getAlKafiContentName(this.id.id).then(content_title => this.content_title  = content_title );
-	this.dataService.getAlKafiContent(this.id.id).then(content => this.content = content);
+	this.route.params.subscribe((input_data) => this.input_data = input_data);
+	
+	if (this.input_data.id) { //Full view
+		this.dataService.getAlKafiContentName(this.input_data.id).then(content_title => this.content_title  = content_title );
+		this.dataService.getAlKafiContent(this.input_data.id).then(content => this.content = content);
+	}
+	else if (this.input_data.query) { //Search Results
+		if (!this.input_data.by) { //Simple search
+			var search_value = $("#search-nonexact").val()
+			this.dataService.searchQuery(search_value).then(content => this.content  = content );
+		}
+		else { // Advanced Search
+			var book = $("#search-book-filter").find(":selected").text();
+			var by = $("#search-narrated-filter").val()
+			var phrase = $("#search-exact-filter").val()
+			this.dataService.searchExactQuery(book, by, phrase).then(content => this.content  = content );
+		}
+	}
+	else { //Single Hadith
+		this.title = this.dataService.convertBookName(this.input_data.book);
+		if (this.input_data.content !== undefined)
+			this.dataService.getAlKafiContentName(this.input_data.content).then(content_title => this.content_title  = content_title );
+	  
+		if (this.input_data.hadith === undefined)
+			this.dataService.getHadith(this.input_data.book, this.input_data.content, this.input_data.chapter, this.input_data.number, -1).then(content => this.content = content);
+		else{
+			this.dataService.getHadith(this.input_data.book, -1, -1, -1, this.input_data.hadith).then(content => this.content = content);
+		}
+	}
   }
   
   ngOnDestroy() {
@@ -60,15 +87,18 @@ export class BookViewComponent implements OnInit {
 		  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 		  // Does a scroll target exist?
 		  if (target.length) {
+			  
 			// Only prevent default if animation is actually gonna happen
 			event.preventDefault();
+			setTimeout(function () { $(".chapter-name").addClass("nav-text-name-hidden") }, 350);
+			$("#collapsable").width("60%")
 			$('html, body').animate({
 			  scrollTop: target.offset().top - 75
 			}, 750, function() {
 			  // Callback after animation
 			  // Must change focus!
-			  $(".chapter-name").addClass("nav-text-name-hidden")
-			  $("#collapsable").width("60%")
+			  
+			  
 			  var $target = $(target);
 			  $target.focus();
 			  if ($target.is(":focus")) { // Checking if the target was focused
