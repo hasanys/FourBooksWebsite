@@ -9,16 +9,76 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand nav-color" [routerLink]="['/']">The Four Books</a>
+                <a class="navbar-brand" [routerLink]="['/']">The Four Books</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse top-nav-bar" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav nav-color">
+                <ul class="nav navbar-nav">
+                    
                     <li>
-                        <a [routerLink]="['/about']">About</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/contact']">Contact</a>
+						<div class="dropdown" title="Navigate to a specific Hadith by either volume/chapter or by absolute hadith number" style="margin-top:7px">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Navigate To Hadith...
+								<span class="caret"></span>
+							</button>
+							<div class="dropdown-menu" style="padding:5px">
+							
+							By Volume/Chapter:
+							<switch id="switch" [status]="true" [size]="mini" (statusChange)="onFlagChange($event)"></switch>
+
+								<form id="non-exact" class="form-horizontal" role="form">
+									<div >
+										<label for="filter">Book:</label>
+										<select id="navigate-book-filter" class="form-control">
+											<option value="1">Al-Kafi</option>
+											<option value="2">Al-Faqih</option>
+											<option value="3">Al-Ahkam</option>
+											<option value="4">Al-Istibsar</option>
+										</select>
+									</div>
+									
+									<br/>
+									<div >
+										<label for="contain">Content ID (Title #):</label>
+										<input id="navigate-volume-filter" class="form-control" type="text" />
+									</div>
+									
+									<br/>
+									<div >
+										<label for="contain">Chapter:</label>
+										<input id="navigate-chapter-filter" class="form-control" type="text" />
+									</div>
+								<br/>
+									<div >
+										<label for="contain">Number:</label>
+										<input id="navigate-number-filter" class="form-control" type="text" />
+									</div>
+									<br />
+									<a [routerLink]="['/hadith', 'null', 'null', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
+								</form>
+								
+								<form id="exact" style="display:none" class="form-horizontal" role="form">
+									<div >
+										<label for="filter">Book:</label>
+										<select id="exact-book-filter" class="form-control">
+											<option value="1">Al-Kafi</option>
+											<option value="2">Al-Faqih</option>
+											<option value="3">Al-Ahkam</option>
+											<option value="4">Al-Istibsar</option>
+										</select>
+									</div>
+									
+									<br/>
+									<div >
+										<label for="contain">Hadith Number:</label>
+										<input id="exact-number-filter" class="form-control" type="text" />
+									</div>
+									
+									<br/>
+									
+									<a [routerLink]="['/hadith', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
+								</form>
+							</div>
+						</div>
                     </li>
 					
 					<li>

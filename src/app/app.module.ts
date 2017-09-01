@@ -16,6 +16,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
 
 const appRoutes: Routes = [
     
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
     ),
+	BootstrapSwitchModule.forRoot(),
     BrowserModule, HttpModule,
         FormsModule,
         ReactiveFormsModule,

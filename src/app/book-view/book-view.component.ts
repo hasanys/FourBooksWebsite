@@ -41,14 +41,22 @@ export class BookViewComponent implements OnInit {
 		}
 	}
 	else { //Single Hadith
+	    var book = this.input_data.book == "null" ? $("#exact-book-filter").find(":selected").text() : this.input_data.book ;
+		if (book == "Al-Kafi") { book = "al-kafi"; } 
+
 		this.title = this.dataService.convertBookName(this.input_data.book);
-		if (this.input_data.content !== undefined)
-			this.dataService.getAlKafiContentName(this.input_data.content).then(content_title => this.content_title  = content_title );
+		//if (this.input_data.content !== undefined) //Get the Book title from database
+			//this.dataService.getAlKafiContentName(this.input_data.content).then(content_title => this.content_title  = content_title );
 	  
-		if (this.input_data.hadith === undefined)
-			this.dataService.getHadith(this.input_data.book, this.input_data.content, this.input_data.chapter, this.input_data.number, -1).then(content => this.content = content);
-		else{
-			this.dataService.getHadith(this.input_data.book, -1, -1, -1, this.input_data.hadith).then(content => this.content = content);
+		if (this.input_data.hadith === undefined) { //Got by volume
+			var content = this.input_data.content == "null" ?  $("#navigate-volume-filter").val() : this.input_data.content;
+			var chapter = this.input_data.chapter == "null" ?  $("#navigate-chapter-filter").val() : this.input_data.chapter;
+			var number = this.input_data.number == "null" ?  $("#navigate-number-filter").val() : this.input_data.number;
+			this.dataService.getHadith(book, content, chapter, number, -1).then(content => this.content = content);
+		} else { //Got by absolute hadith number
+			var number = this.input_data.hadith == "null" ?  $("#exact-number-filter").val() : this.input_data.hadith;
+			console.log(book);
+			this.dataService.getHadith(book, -1, -1, -1, number).then(content => this.content = content);
 		}
 	}
   }

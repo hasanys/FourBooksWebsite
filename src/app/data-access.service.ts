@@ -90,7 +90,7 @@ export class DataAccessService {
 	}
 	
 	convertBookName(name) : string {
-		if (name === "al-kafi" || name === "kafi")
+		if (name === "al-kafi" || name === "kafi" || name == "Al-Kafi")
 			return "Kitab Al-Kafi";
 		else 
 			return "";
