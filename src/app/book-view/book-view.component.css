@@ -84,11 +84,17 @@ h3 {
   text-decoration: underline;
   font-weight: bold;
 }
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 .sidebar-nav-fixed {
 	width:12%;
 	margin-left: -14%;
+
+    max-height: 80%;
+    overflow-y: auto;
 }
+
 .clear { clear:both; }
 
 .coming-soon {

@@ -1307,7 +1307,8 @@ small,
 mark,
 .mark {
   padding: .2em;
-  background-color: #fcf8e3;
+  	background-color: #efff00 !important;
+	font-weight: bold !important;
 }
 .text-left {
   text-align: left;

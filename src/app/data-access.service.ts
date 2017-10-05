@@ -108,7 +108,7 @@ export class DataAccessService {
 		return this.http.get(this.search_url + 'query=' + query + '&book=' + book + '&by=' + by)
 					.map((res) => {
 						// some manipulation
-						console.log(res.json())
+						//console.log(res.json())
 						return res.json()
 					}).toPromise();		
 }

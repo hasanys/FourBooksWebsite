@@ -66,19 +66,18 @@ export class BookViewComponent implements OnInit {
   
   ngAfterViewInit(): void {
 	  setTimeout(function() { 
-        $("#collapsable").hover(
+        $("#collapsable-parent").hover(
             function(){
 				
 				setTimeout(function () { $(".chapter-name").removeClass("nav-text-name-hidden") }, 500);
-                $(this).animate({ "width" : "300%"}, 'fast', 'swing', function() { }); 
+                $(this).animate({ "width" : "50%"}, 'fast', 'swing', function() { }); 
             },
             function(){
 				setTimeout(function () { $(".chapter-name").addClass("nav-text-name-hidden") }, 500);
 				
-                $(this).animate({ "width" : "100%" }, 'fast', 'swing');
+                $(this).animate({ "width" : "12%" }, 'fast', 'swing');
             }
         );                             
-    
 	$('a[href*="#"]')
 	  // Remove links that don't actually link to anything
 	  .not('[href="#"]')
@@ -99,7 +98,7 @@ export class BookViewComponent implements OnInit {
 			// Only prevent default if animation is actually gonna happen
 			event.preventDefault();
 			setTimeout(function () { $(".chapter-name").addClass("nav-text-name-hidden") }, 350);
-			$("#collapsable").width("60%")
+			$("#collapsable-parent").animate({ "width" : "12%" }, 'fast', 'swing');
 			$('html, body').animate({
 			  scrollTop: target.offset().top - 75
 			}, 750, function() {

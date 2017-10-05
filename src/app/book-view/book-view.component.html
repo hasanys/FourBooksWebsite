@@ -1,6 +1,6 @@
 <!-- SIDE BAR -->
 	<div *ngIf="content_title?.chapters?.length > 1" class="col-md-1">
-            <div class="sidebar-nav-fixed affix">
+            <div class="sidebar-nav-fixed affix" id="collapsable-parent">
                 <div id="collapsable" class="well collapsable-div">
                     <ul class="nav ">
                         <li class="active" *ngFor="let c of content_title.chapters; index as i">
