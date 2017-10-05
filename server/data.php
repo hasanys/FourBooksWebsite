@@ -127,4 +127,82 @@ function get_content_title($name, $id)
 	$conn->close();
 	return $arr;
 }
+
+function get_hadith_by_content($book, $content_id, $chapter, $number)
+{
+    $conn = connect_to_db($book);
+    $conn->set_charset("utf8");
+    
+    $sql = "SELECT * FROM hadith WHERE content_id=$content_id AND chapter=$chapter AND number=$number";
+    $result = mysqli_query($conn, $sql);
+//    $row = mysqli_fetch_assoc($result);
+
+	$data = array();
+	if ($result->num_rows > 0) {
+		$row = $result->fetch_assoc();
+		$data[] = array( 'id' => $row["id"], 'chapter' => $row["chapter"], 'hadith' => $row["hadith"], 'number' => $row["number"], 'narrator' => utf8_encode($row["narrator"]), 'text' => utf8_encode($row["text"]), 'chapter_name' => utf8_encode($row["chapter_name"]) );
+	}
+	
+    $conn->close();
+    return $data;
+} 
+
+function get_hadith_by_number($book, $hadith) 
+{
+    $conn = connect_to_db($book);
+    $conn->set_charset("utf8");
+    	
+    $sql = "SELECT * FROM hadith WHERE hadith=$hadith";
+    $result = mysqli_query($conn, $sql);
+
+	$data = array();
+	if ($result->num_rows > 0) {
+		$row = $result->fetch_assoc();
+		$data[] = array( 'id' => $row["id"], 'chapter' => $row["chapter"], 'hadith' => $row["hadith"], 'number' => $row["number"], 'narrator' => utf8_encode($row["narrator"]), 'text' => utf8_encode($row["text"]), 'chapter_name' => utf8_encode($row["chapter_name"]) );
+	}
+	
+    $conn->close();
+    return $data;
+}
+
+function get_wildcard_search($query)
+{
+    $conn = connect_to_db("al-kafi");
+    $conn->set_charset("utf8");
+
+	$query = str_replace(" ", "% ", $query);	
+    $sql = "SELECT * FROM hadith WHERE text LIKE '%$query%'";
+
+	$result = mysqli_query($conn, $sql);
+	$data = array();
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {    
+			// output data of each row
+            $data[] = array( 'id' => $row["id"], 'chapter' => $row["chapter"], 'hadith' => $row["hadith"], 'number' => $row["number"], 'narrator' => utf8_encode($row["narrator"]), 'text' => utf8_encode($row["text"]), 'chapter_name' => utf8_encode($row["chapter_name"]) );
+        }
+	}
+    $conn->close();
+    return $data;
+}
+
+function get_exact_search($query, $by, $book)
+{
+	//if ($book == "All Books" || $book == "Al-Kafi") {
+	$conn = connect_to_db("al-kafi");
+    $conn->set_charset("utf8");
+
+	$by = str_replace(" ", "%", $by);
+	$sql = "SELECT * FROM hadith WHERE narrator LIKE '%$by%' AND text LIKE '%$query%'";
+
+	$result = mysqli_query($conn, $sql);
+	$data = array();
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {    
+			// output data of each row
+            $data[] = array( 'id' => $row["id"], 'chapter' => $row["chapter"], 'hadith' => $row["hadith"], 'number' => $row["number"], 'narrator' => utf8_encode($row["narrator"]), 'text' => utf8_encode($row["text"]), 'chapter_name' => utf8_encode($row["chapter_name"]) );
+        }
+	}
+    $conn->close();
+    return $data;
+}
 ?>

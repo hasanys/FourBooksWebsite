@@ -76,6 +76,19 @@ h3 {
 
 }
 
+.label-for-copy
+{
+	display: block;
+	text-align:center;
+	line-height: 2em;
+	color:red;
+	opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
  strong
 {
   font-size: large;
@@ -183,8 +196,15 @@ and (max-device-width : 480px) {
     font-weight: bold;
 }
 .pop-up-text {
-    width: 50% !important;
+    width: 80% !important;
 	margin: 0 auto !important;
+    display: block;
+
+}
+
+#inputlg {
+	width: 70%;
+    display: inline;
 }
 
 #name-wrapper {

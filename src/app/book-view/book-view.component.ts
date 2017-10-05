@@ -15,7 +15,9 @@ export class BookViewComponent implements OnInit {
   private var2: string;
   content:Array<Object>;
   content_title;
-
+  search_phrase: string;
+  book_name: string;
+  
   constructor( 
 	private dataService:DataAccessService,
 	private route: ActivatedRoute,
@@ -25,25 +27,32 @@ export class BookViewComponent implements OnInit {
 	this.route.params.subscribe((input_data) => this.input_data = input_data);
 	
 	if (this.input_data.id) { //Full view
+		this.book_name = this.input_data.name
 		this.dataService.getAlKafiContentName(this.input_data.id).then(content_title => this.content_title  = content_title );
 		this.dataService.getAlKafiContent(this.input_data.id).then(content => this.content = content);
 	}
 	else if (this.input_data.query) { //Search Results
+		this.book_name = 'al-kafi'
 		if (!this.input_data.by) { //Simple search
-			var search_value = $("#search-nonexact").val()
-			this.dataService.searchQuery(search_value).then(content => this.content  = content );
+			var search_value = $("#search-nonexact").val().trim()
+			this.search_phrase = search_value;
+			this.dataService.searchQuery(search_value).then(content => this.content  = content ).catch(() => "failed").then(() => this.highlight_function() );
 		}
 		else { // Advanced Search
 			var book = $("#search-book-filter").find(":selected").text();
 			var by = $("#search-narrated-filter").val()
-			var phrase = $("#search-exact-filter").val()
-			this.dataService.searchExactQuery(book, by, phrase).then(content => this.content  = content );
+			var phrase = $("#search-exact-filter").val().trim();
+			this.search_phrase = phrase
+			this.dataService.searchExactQuery(book, by, phrase).then(content => this.content  = content ).catch(() => "failed").then(function() { console.log("2 Gets here at the end?") } );
 		}
+		
 	}
 	else { //Single Hadith
 	    var book = this.input_data.book == "null" ? $("#exact-book-filter").find(":selected").text() : this.input_data.book ;
 		if (book == "Al-Kafi") { book = "al-kafi"; } 
 
+		this.book_name = book
+		
 		this.title = this.dataService.convertBookName(this.input_data.book);
 		//if (this.input_data.content !== undefined) //Get the Book title from database
 			//this.dataService.getAlKafiContentName(this.input_data.content).then(content_title => this.content_title  = content_title );
@@ -55,7 +64,6 @@ export class BookViewComponent implements OnInit {
 			this.dataService.getHadith(book, content, chapter, number, -1).then(content => this.content = content);
 		} else { //Got by absolute hadith number
 			var number = this.input_data.hadith == "null" ?  $("#exact-number-filter").val() : this.input_data.hadith;
-			console.log(book);
 			this.dataService.getHadith(book, -1, -1, -1, number).then(content => this.content = content);
 		}
 	}
@@ -119,14 +127,65 @@ export class BookViewComponent implements OnInit {
 		}
 	  });
 		  }, 1000);
-	  }
+		  if (this.search_phrase && this.search_phrase.length > 0) {
+			  $.fn.wrapInTag = function(opts) {
+  
+			  var tag = opts.tag || 'strong',
+				  words = opts.words || [],
+				  regex = RegExp("\\b" + words.join('\\b|\\b') + "\\b", 'gi'),
+				  replacement = '<'+ tag +'>$&</'+ tag +'>';
 
+			  return this.html(function() {
+				return $(this).text().replace(regex, replacement);
+			  });
+			};
+		  }
+
+	  }
+	public highlight_function() {
+		 
+		 setTimeout( this.do_highlight, 4000, this.search_phrase)
+	}
+	
+	public do_highlight(phrase) {
+		var res = phrase.split(" ");
+			$('.normal-text').wrapInTag({
+				tag: 'mark',
+				words: res
+			});
+	}
+	
 	public open_module(item) {
+		$('#copy-outcome').css('opacity', 0);
 		//$(modal.style.display = "block";
 		$(".modal").show()
 		$("#inputlg").val(item)
 		$( ".close" ).click(function() {
 			$( ".modal" ).hide();
 		});
+		
+		var url = $("#inputlg").val()
+		$("#share-email").attr("href", "mailto:?Subject=Shared%20Hadith%20from%20Four%20Shia%20Books...&amp;Body=Check%20out%20this%20hadith%20I%20shared%20with%20you!%20 " + url)
+		$("#share-fb").attr("href", "http://www.facebook.com/sharer.php?u=" + url + "=")
+		$("#share-twitter").attr("href", "https://twitter.com/share?url=" + url + "&amp;text=Check%20out%20this%20Hadith;hashtags=ShiaHadith,FourShiaBooks")
+		$("#share-reddit").attr("href", "http://reddit.com/submit?url=" + url + "&amp;title=Shia Hadith")
+		$("share-fb").attr("style", "transform: translateY(7px)");
+		}
+	
+	public copyToClipboardMsg() {
+		
+		var elementId = "inputlg"
+		try {
+   	  var aux = document.createElement("input");
+		aux.setAttribute("value", $("#inputlg").val());
+		document.body.appendChild(aux);
+		aux.select();
+		document.execCommand("copy");
+		document.getElementById("copy-outcome").innerHTML = "Copied to clipboard"
+		if ($('#copy-outcome').css('opacity') == 0) $('#copy-outcome').css('opacity', 1);
+		} catch (err) {
+			document.getElementById("copy-outcome").innerHTML = "Failed to copy, please select the text and use Control+C to copy"
+		}
+		document.body.removeChild(aux);
 	}
 }

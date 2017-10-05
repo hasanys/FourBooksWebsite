@@ -29,7 +29,7 @@
 </div>
 
 <!-- INTRO TEXT -->
-<div *ngIf="input_data.id == 1">
+<div *ngIf="input_data.id == 0">
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
 		<h1> {{ c.header }}</h1>
 		<p class="normal-text intro-text "> {{ c.text }} </p>
@@ -53,7 +53,7 @@
 </div>
 
 <!-- MAIN CONTENT -->
-<div *ngIf="!input_data.id || input_data.id != 1">
+<div *ngIf="!input_data.id || input_data.id > 0">
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
 		<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
 
@@ -63,7 +63,7 @@
 				  {{s}} <br/> 
 			</div> 
 			<div>
-				<a class="subtext" style="float:left" (click)="open_module('http://www.fourshiabooks.com/hadith/' + input_data.name + '/' + input_data.id + '/' + c.chapter + '/' + c.number)">Share... </a>
+				<a class="subtext" style="float:left; cursor: pointer;cursor: hand" (click)="open_module('http://www.fourshiabooks.com/hadith/' + book_name + '/' + c.content_id + '/' + c.chapter + '/' + c.number)">Share... </a>
 				<span class="subtext" style="float:right">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> 
 			</div><br />
 		</div>
@@ -77,80 +77,43 @@
 	<div class="modal-content">
 		<span class="close">&times;</span>
 		<div class="form-group pop-up-text" >
-			<input class="form-control input-lg" id="inputlg" type="text">
-		</div><br/>
-		<div id="share-buttons" style="width:70%;margin:0 auto;">
-    
-    <!-- Buffer -->
-    <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
-    </a>
-    
-    <!-- Digg -->
-    <a href="http://www.digg.com/submit?url=https://simplesharebuttons.com" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" />
-    </a>
-    
+		<span>
+		<a (click)="copyToClipboardMsg()"><button type="button" class="btn btn-secondary">Copy to Clipboard</button></a>
+			<input class="form-control input-lg" id="inputlg" type="text" >
+		</span>
+
+		</div>
+				<div> <label id="copy-outcome" class="label-for-copy"></label> </div>
+
+		<div id="share-buttons" style="text-align: center;">
+        <span >
     <!-- Email -->
-    <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+    <a id="share-email" href="">
         <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
     </a>
- 
-    <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+
+    <!-- Facebook 
+	<iframe id="share-fb" src="" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>-->
+	<a id="share-fb" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
     </a>
-    
-    <!-- Google+ -->
-    <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+
+    <!-- Twitter -->
+    <a id="share-twitter" href="" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
     </a>
-    
-    <!-- LinkedIn -->
-    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
-    </a>
-    
-    <!-- Pinterest -->
-    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
-        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+
+    <!-- Reddit -->
+    <a id="share-reddit" href="" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
     </a>
     
     <!-- Print -->
     <a href="javascript:;" onclick="window.print()">
         <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
     </a>
+    </span>
     
-    <!-- Reddit -->
-    <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
-    </a>
-    
-    <!-- StumbleUpon-->
-    <a href="http://www.stumbleupon.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" />
-    </a>
-    
-    <!-- Tumblr-->
-    <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
-    </a>
-     
-    <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-    </a>
-    
-    <!-- VK -->
-    <a href="http://vkontakte.ru/share.php?url=https://simplesharebuttons.com" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
-    </a>
-    
-    <!-- Yummly -->
-    <a href="http://www.yummly.com/urb/verify?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
-        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
-    </a>
-
 </div>
 	</div>
 </div>

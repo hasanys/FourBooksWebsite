@@ -13,5 +13,35 @@ h2 {text-align:center;}
     background: #ffff99;
 }
  tr:hover {
-          background-color: #ffff99;
-        }
+    background-color: #ffff99;
+}
+		
+p {
+    font-family: 'Open Sans','Trebuchet MS','Arial','sans-serif';
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-weight: normal;
+    font-style: italic;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 10px;
+    text-shadow: 2px 2px 2px #ccc;
+}
+
+h1 {
+	font: 600 1.5em/1 'Raleway', sans-serif;
+    color: rgba(0,0,0,.6);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-size: 50px;
+}
+
+h2 {
+	font-weight: bolder;
+}
+a {
+color:red}

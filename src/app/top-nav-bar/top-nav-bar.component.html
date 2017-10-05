@@ -23,7 +23,7 @@
 							<div class="dropdown-menu" style="padding:5px">
 							
 							By Volume/Chapter:
-							<switch id="switch" [status]="true" [size]="mini" (statusChange)="onFlagChange($event)"></switch>
+							<switch id="switch" [status]="true"  (statusChange)="onFlagChange($event)"></switch>
 
 								<form id="non-exact" class="form-horizontal" role="form">
 									<div >
@@ -38,18 +38,18 @@
 									
 									<br/>
 									<div >
-										<label for="contain">Content ID (Title #):</label>
+										<label for="contain">Book #:</label>
 										<input id="navigate-volume-filter" class="form-control" type="text" />
 									</div>
 									
 									<br/>
 									<div >
-										<label for="contain">Chapter:</label>
+										<label for="contain">Chapter #:</label>
 										<input id="navigate-chapter-filter" class="form-control" type="text" />
 									</div>
 								<br/>
 									<div >
-										<label for="contain">Number:</label>
+										<label for="contain">Hadith #:</label>
 										<input id="navigate-number-filter" class="form-control" type="text" />
 									</div>
 									<br />
