@@ -30,10 +30,12 @@
 
 <!-- INTRO TEXT -->
 <div *ngIf="input_data.id == 0">
+<div class="hadith-container" > 
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
 		<h1> {{ c.header }}</h1>
 		<p class="normal-text intro-text "> {{ c.text }} </p>
 	</div>
+	</div><br/>
 </div>
 
 <!-- COMING SOON TEXT -->
@@ -55,8 +57,11 @@
 <!-- MAIN CONTENT -->
 <div *ngIf="!input_data.id || input_data.id > 0">
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
+	
 		<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
-
+		<h1 *ngIf="input_data.book || input_data.query">Kitab Al-Kafi: Book # {{c.content_id}}</h1>
+		<h3 *ngIf="input_data.book || input_data.query">Chapter {{c.chapter }}: {{c.chapter_name}}</h3>
+		
 		<div class="hadith-container" > 
 			<span class="nar-text"> {{ c.narrator }}</span><br /><br />
 			<div class="normal-text" *ngFor="let s of c.text.split('\n')">

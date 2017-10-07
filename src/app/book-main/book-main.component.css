@@ -15,7 +15,10 @@ h2 {text-align:center;}
  tr:hover {
     background-color: #ffff99;
 }
-		
+table {
+	border: 2px solid DarkOrange !important;
+
+}
 p {
     font-family: 'Open Sans','Trebuchet MS','Arial','sans-serif';
     font-size: 14px;
@@ -28,7 +31,7 @@ p {
     text-align: center;
     text-decoration: none;
     text-indent: 10px;
-    text-shadow: 2px 2px 2px #ccc;
+    text-shadow: 1px 1px 2px #ccc;
 }
 
 h1 {
@@ -38,10 +41,12 @@ h1 {
     text-transform: uppercase;
     letter-spacing: .35em;
     font-size: 50px;
+	text-shadow: 2px 2px 3px #b9b9b9;;
 }
 
 h2 {
 	font-weight: bolder;
+	text-shadow: 1px 1px 2px #ffffff;
 }
 a {
 color:red}

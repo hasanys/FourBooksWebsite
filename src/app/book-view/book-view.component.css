@@ -10,6 +10,11 @@
 	float:right;
 }
 .nar-text {
+	text-align: center;
+	display: block;
+	margin-bottom: -30px;
+	
+	
     font-size: 14px;
     font-weight: bold;
     color: #4e6271;
@@ -43,6 +48,7 @@ p {
 
 .normal-text {
 	text-align: justify;
+	text-align:center;
 	font-size: 16px;
 	font-family: serif;
     color: #313131;

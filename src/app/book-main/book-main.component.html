@@ -1,12 +1,7 @@
 <h1> {{ book_title }} </h1>
 
-<div *ngFor="let s of description?.text?.split('\r\n')">
-<p>      {{s}} </p><br/> 
-</div> 
-
-For complete information, please read the <strong><a [routerLink]="['/view/', 'al-kafi', '0']" routerLinkActive="active">first section of the book: Introduction.</a></strong>.
-
-<br/>
+<p [innerHTML]="description?.text"></p>
+<p>For a complete introduction, please read the <strong><a [routerLink]="['/view/', 'al-kafi', '0']" routerLinkActive="active">first section of the book: Introduction.</a></strong></p>.
 
 <h2> Part 1 : AL-’USUL (principles)</h2>
 <p> This part of the book consists of Ahadith on the principles of beliefs and it is called ’Usul al-Kafi 
@@ -34,12 +29,12 @@ For complete information, please read the <strong><a [routerLink]="['/view/', 'a
   
 </table>
 
-<h2> PART 2 : AL-FURU </h2>
+<h2> PART 2 : AL-FURU (legal)</h2>
 <p> This part consists of Ahadith on Islamic practical laws such as:</p>
-<ul> 
-<li>The acts of worship (‘Ibadat)</li>
-<li>Business transactions (mu‘amalat)</li>
-<li>Judicial laws (al-Qada’)</li>
+<ul style="text-align:center; list-style: none"> 
+<li><p>The acts of worship (‘Ibadat)</p></li>
+<li><p>Business transactions (mu‘amalat)</p></li>
+<li><p>Judicial laws (al-Qada’)</p></li>
 </ul>
 
 <table class="tg table-hover">
