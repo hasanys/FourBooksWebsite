@@ -16,18 +16,20 @@
                 <ul class="nav navbar-nav">
                     
                     <li>
-						<div class="dropdown" title="Navigate to a specific Hadith by either volume/chapter or by absolute hadith number" style="margin-top:7px">
+						<div class="dropdown navigate-area " title="Navigate to a specific Hadith by either volume/chapter or by absolute hadith number" style="margin-top:7px">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Navigate To Hadith...
 								<span class="caret"></span>
 							</button>
 							<div class="dropdown-menu" style="padding:5px">
 							
-							By Volume/Chapter:
-							<switch id="switch" [status]="true"  (statusChange)="onFlagChange($event)"></switch>
-
+							<div>
+								<label class="navigate-label">By Volume/Chapter:</label>
+								<switch id="switch" [status]="true"  (statusChange)="onFlagChange($event)"></switch>
+							</div>
+							
 								<form id="non-exact" class="form-horizontal" role="form">
-									<div >
-										<label for="filter">Book:</label>
+									<div>
+										<label class="navigate-label" for="filter">Book:</label>
 										<select id="navigate-book-filter" class="form-control">
 											<option value="1">Al-Kafi</option>
 											<option value="2">Al-Faqih</option>
@@ -36,29 +38,25 @@
 										</select>
 									</div>
 									
-									<br/>
 									<div >
-										<label for="contain">Book #:</label>
+										<label class="navigate-label" for="contain">Book #:</label>
 										<input id="navigate-volume-filter" class="form-control" type="text" />
 									</div>
 									
-									<br/>
 									<div >
-										<label for="contain">Chapter #:</label>
+										<label class="navigate-label" for="contain">Chapter #:</label>
 										<input id="navigate-chapter-filter" class="form-control" type="text" />
 									</div>
-								<br/>
 									<div >
-										<label for="contain">Hadith #:</label>
+										<label class="navigate-label" for="contain">Hadith #:</label>
 										<input id="navigate-number-filter" class="form-control" type="text" />
 									</div>
-									<br />
 									<a [routerLink]="['/hadith', 'null', 'null', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
 								</form>
 								
 								<form id="exact" style="display:none" class="form-horizontal" role="form">
 									<div >
-										<label for="filter">Book:</label>
+										<label class="navigate-label" for="filter">Book:</label>
 										<select id="exact-book-filter" class="form-control">
 											<option value="1">Al-Kafi</option>
 											<option value="2">Al-Faqih</option>
@@ -67,13 +65,11 @@
 										</select>
 									</div>
 									
-									<br/>
 									<div >
-										<label for="contain">Hadith Number:</label>
+										<label class="navigate-label" for="contain">Hadith Number:</label>
 										<input id="exact-number-filter" class="form-control" type="text" />
 									</div>
 									
-									<br/>
 									
 									<a [routerLink]="['/hadith', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
 								</form>
@@ -90,10 +86,10 @@
                     <div class="btn-group" role="group">
                         <div class="dropdown dropdown-lg">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <div class="dropdown-menu dropdown-menu-search dropdown-menu-right" role="menu">
                                 <form class="form-horizontal" role="form">
                                   <div class="form-group">
-                                    <label for="filter">Search in...</label>
+                                    <label class="navigate-label" for="filter">Search in...</label>
                                     <select id="search-book-filter" class="form-control">
                                         <option value="0" selected>All Books</option>
                                         <option value="1">Al-Kafi</option>
@@ -103,11 +99,11 @@
                                     </select>
                                   </div>
                                   <div class="form-group">
-                                    <label for="contain">Narrated By...</label>
+                                    <label class="navigate-label" for="contain">Narrated By...</label>
                                     <input id="search-narrated-filter" class="form-control" type="text" />
                                   </div>
                                   <div class="form-group">
-                                    <label for="contain">Has the phrase (Exact match)</label>
+                                    <label class="navigate-label" for="contain">Has the phrase (Exact match)</label>
                                     <input id="search-exact-filter" class="form-control" type="text" />
                                   </div>
                                   <a [routerLink]="['/results', 'book', 'by', 'query']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true">Advanced Search</span></button></a>

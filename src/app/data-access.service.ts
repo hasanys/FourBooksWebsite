@@ -20,11 +20,12 @@ export class DataAccessService {
   email_url = 'http://fourshiabooks.com/server/send_email.php';
   hadith_url = 'http://fourshiabooks.com/server/get_hadith.php?';
   search_url = 'http://fourshiabooks.com/server/get_results.php?';
+  exact_search_url = 'http://fourshiabooks.com/server/get_exact_results.php?';
   
   getAlKafiChapterNames(part) : Promise<Array<any>> { 
 	return this.http.get(this.titles_url + 'book=al-kafi&part=' + part)
 					.map((res) => {
-						// some manipulation
+						// some manipulation						
 						return res.json()
 					})
 					.toPromise();
@@ -105,7 +106,7 @@ export class DataAccessService {
 	}
 	
 	searchExactQuery(book, by, query ) :  Promise<Array<any>> {
-		return this.http.get(this.search_url + 'query=' + query + '&book=' + book + '&by=' + by)
+		return this.http.get(this.exact_search_url + 'query=' + query + '&book=' + book + '&by=' + by)
 					.map((res) => {
 						// some manipulation
 						//console.log(res.json())

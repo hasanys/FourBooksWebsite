@@ -35,6 +35,45 @@ color: #bab8b8 !important;}
     border-bottom-left-radius: 4px;
 }
 
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.dropdown{
+		margin-bottom: 7px;
+	}
+	.navigate-label {
+		color: white;
+	}
+	.navigate-area {
+		width: 95vw !important;
+	}
+	.dropdown-toggle {
+		margin-left: 10px;
+	}
+	.open {
+		width: 30px ;
+	}
+	
+	.dropdown-menu-search {
+	    transform: TranslateX(-85%);
+		width: 95vw !important;	
+	}
+}
+
+@media only screen 
+and (min-device-width : 240px) 
+and (max-device-width : 380px) {
+	
+	.dropdown-menu-search {
+	    transform: TranslateX(-80%);
+		width: 95vw !important;	
+	}
+}
+
+.form-control {
+	margin-bottom: 5px;
+}
 .search-bar {
 	
 }
