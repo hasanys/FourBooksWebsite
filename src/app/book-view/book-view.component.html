@@ -4,7 +4,8 @@
                 <div id="collapsable" class="well collapsable-div">
                     <ul class="nav ">
                         <li class="active" *ngFor="let c of content_title.chapters; index as i">
-						<span class="nav-items"> <a class="nav-text" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter {{ i  + 1 }}</a> 
+						<span class="nav-items"> <a class="nav-text-chapter" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">Chapter </a>
+												 <a class="nav-text" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)">{{ i  + 1 }}</a>
 						<a id="chapter-names" class="nav-text-name-hidden nav-text chapter-name" [attr.href]="'/view/' + content_title.book + '/' + content_title.id + '#' + (i+1)"> : {{c.chapter_name}} </a> 
 						</span><br/><br/>
                         </li>
@@ -14,14 +15,15 @@
             </div>
             <!--/sidebar-nav-fixed -->
         </div>
-		
+
+<div class="main-content" >
 <!-- TITLE -->
 <h1 *ngIf="input_data.id != 1"> {{ content_title?.title }} </h1>
 <h2 *ngIf="input_data.id != 1"> {{ content_title?.text }} </h2>
 
 <!-- LOADING SPINNER -->
 <div class="spinner" *ngIf="!content">
-  <div class="rect1"></div>
+  <div class="rect1"></div>	
   <div class="rect2"></div>
   <div class="rect3"></div>
   <div class="rect4"></div>
@@ -73,7 +75,7 @@
 		</div>
 	</div>
 </div>
-
+</div>
 <!-- SHARE POPUP MODAL -->
 <div id="myModal" class="modal">
 

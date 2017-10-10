@@ -23,6 +23,14 @@ export class TopNavBarComponent implements OnInit {
 		$("#exact").show()		
 	}
   }
+  getValueBook() : String {
+	var book = $("#exact-book-filter").find(":selected").text();
+	if (book == "Al-Kafi") { book = "al-kafi"; } //Match database name
+	return book;
+  }
+  getValueHadithNum() : String { //Got by absolute hadith number
+	return $("#exact-number-filter").val();
+  }
   
   ngAfterViewInit(): void {
 	  //Prevent drop-down closing on click inside

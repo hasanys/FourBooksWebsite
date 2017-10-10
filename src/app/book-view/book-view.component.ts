@@ -24,12 +24,15 @@ export class BookViewComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-	this.route.params.subscribe((input_data) => this.input_data = input_data);
+	this.route.params.subscribe(input_data => {
+		
+	this.input_data = input_data
 	
 	if (this.input_data.id) { //Full view
 		this.book_name = this.input_data.name
 		this.dataService.getAlKafiContentName(this.input_data.id).then(content_title => this.content_title  = content_title );
 		this.dataService.getAlKafiContent(this.input_data.id).then(content => this.content = content);
+		
 	}
 	else if (this.input_data.query) { //Search Results
 		this.book_name = 'al-kafi'
@@ -48,31 +51,25 @@ export class BookViewComponent implements OnInit {
 		
 	}
 	else { //Single Hadith
-	    var book = this.input_data.book == "null" ? $("#exact-book-filter").find(":selected").text() : this.input_data.book ;
-		if (book == "Al-Kafi") { book = "al-kafi"; } 
 
-		this.book_name = book
-		
+		this.book_name = this.input_data.book
 		this.title = this.dataService.convertBookName(this.input_data.book);
-		//if (this.input_data.content !== undefined) //Get the Book title from database
-			//this.dataService.getAlKafiContentName(this.input_data.content).then(content_title => this.content_title  = content_title );
-	  
+  
 		if (this.input_data.hadith === undefined) { //Got by volume
-			var content = this.input_data.content == "null" ?  $("#navigate-volume-filter").val() : this.input_data.content;
-			var chapter = this.input_data.chapter == "null" ?  $("#navigate-chapter-filter").val() : this.input_data.chapter;
-			var number = this.input_data.number == "null" ?  $("#navigate-number-filter").val() : this.input_data.number;
-			this.dataService.getHadith(book, content, chapter, number, -1).then(content => this.content = content);
+			this.dataService.getHadith(this.input_data.book, this.input_data.content, this.input_data.chapter , this.input_data.number, -1).then(content => this.content = content);
 		} else { //Got by absolute hadith number
-			var number = this.input_data.hadith == "null" ?  $("#exact-number-filter").val() : this.input_data.hadith;
-			this.dataService.getHadith(book, -1, -1, -1, number).then(content => this.content = content);
+			this.dataService.getHadith(this.input_data.book, -1, -1, -1, this.input_data.hadith).then(content => this.content = content);
 		}
 	}
+	}
+	);
   }
   
   ngOnDestroy() {
   }
   
   ngAfterViewInit(): void {
+	  
 	  setTimeout(function() { 
         $("#collapsable-parent").hover(
             function(){

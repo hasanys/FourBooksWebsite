@@ -40,18 +40,18 @@
 									
 									<div >
 										<label class="navigate-label" for="contain">Book #:</label>
-										<input id="navigate-volume-filter" class="form-control" type="text" />
+										<input id="navigate-volume-filter" class="form-control" type="text" [(ngModel)]='bookNumberValue' name="somethingtestTwo"/>
 									</div>
 									
 									<div >
 										<label class="navigate-label" for="contain">Chapter #:</label>
-										<input id="navigate-chapter-filter" class="form-control" type="text" />
+										<input id="navigate-chapter-filter" class="form-control" type="text" [(ngModel)]='chapterNumberValue' name="somethingtestThree"/>
 									</div>
 									<div >
 										<label class="navigate-label" for="contain">Hadith #:</label>
-										<input id="navigate-number-filter" class="form-control" type="text" />
+										<input id="navigate-number-filter" class="form-control" type="text" [(ngModel)]='hadNumberValue' name="somethingtestFour"/>
 									</div>
-									<a [routerLink]="['/hadith', 'null', 'null', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
+									<a [routerLink]="['/hadith', getValueBook(), bookNumberValue, chapterNumberValue, hadNumberValue]" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
 								</form>
 								
 								<form id="exact" style="display:none" class="form-horizontal" role="form">
@@ -67,11 +67,11 @@
 									
 									<div >
 										<label class="navigate-label" for="contain">Hadith Number:</label>
-										<input id="exact-number-filter" class="form-control" type="text" />
+										<input id="exact-number-filter" class="form-control" type="text" [(ngModel)]='hadithNumberValue' name="somethingtest" />
 									</div>
 									
 									
-									<a [routerLink]="['/hadith', 'null', 'null']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
+									<a [routerLink]="['/hadith', getValueBook(), hadithNumberValue]" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> Navigate</span></button></a>
 								</form>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 					
 
             <div class="search-bar input-group" id="adv-search" >
-                <input type="text" class="form-control" id="search-nonexact" placeholder="Search for Hadith text in all books..." />
+                <input type="text" class="form-control" id="search-nonexact" placeholder="Search for Hadith text in all books..." [(ngModel)]='searchValue' name="somethingtestSeven"/>
                 <div class="input-group-btn">
                     <div class="btn-group" role="group">
                         <div class="dropdown dropdown-lg">
@@ -100,17 +100,17 @@
                                   </div>
                                   <div class="form-group">
                                     <label class="navigate-label" for="contain">Narrated By...</label>
-                                    <input id="search-narrated-filter" class="form-control" type="text" />
+                                    <input id="search-narrated-filter" class="form-control" type="text" [(ngModel)]='NarValue' name="somethingtestFive"/>
                                   </div>
                                   <div class="form-group">
                                     <label class="navigate-label" for="contain">Has the phrase (Exact match)</label>
-                                    <input id="search-exact-filter" class="form-control" type="text" />
+                                    <input id="search-exact-filter" class="form-control" type="text" [(ngModel)]='ExactSearchValue' name="somethingtestSix"/>
                                   </div>
-                                  <a [routerLink]="['/results', 'book', 'by', 'query']" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true">Advanced Search</span></button></a>
+                                  <a [routerLink]="['/results', 'book', NarValue, ExactSearchValue]" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true">Advanced Search</span></button></a>
                                 </form>
                             </div>
                         </div>
-                        <a [routerLink]="['/results', 'al-kafi']" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></a>
+                        <a [routerLink]="['/results', searchValue]" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></a>
                     </div>
                 </div>
             </div>

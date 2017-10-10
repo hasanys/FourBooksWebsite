@@ -36,5 +36,6 @@ and (max-device-width : 480px) {
 	.content {
 	margin-left: 0%;
 	margin-right: 0%;		
+	padding-right: 15px;
 	}
 }
