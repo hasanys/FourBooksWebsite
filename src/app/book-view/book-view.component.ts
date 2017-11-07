@@ -2,7 +2,18 @@ import { Component, OnInit, AfterViewInit  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataAccessService } from '../data-access.service'
+import {PipeTransform, Pipe} from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser'
+
 declare var $: any;
+
+@Pipe({ name: 'safeHtml'})
+export class SafeHtmlPipe implements PipeTransform  {
+  constructor(private sanitized: DomSanitizer) {}
+  transform(value) {
+    return this.sanitized.bypassSecurityTrustHtml(value);
+  }
+}
 
 @Component({
   selector: 'app-book-view',
@@ -74,11 +85,11 @@ export class BookViewComponent implements OnInit {
         $("#collapsable-parent").hover(
             function(){
 				
-				setTimeout(function () { $(".chapter-name").removeClass("nav-text-name-hidden") }, 500);
+				setTimeout(function () { $(".chapter-name").removeClass("nav-text-name-hidden") }, 250);
                 $(this).animate({ "width" : "50%"}, 'fast', 'swing', function() { }); 
             },
             function(){
-				setTimeout(function () { $(".chapter-name").addClass("nav-text-name-hidden") }, 500);
+				setTimeout(function () { $(".chapter-name").addClass("nav-text-name-hidden") }, 150);
 				
                 $(this).animate({ "width" : "12%" }, 'fast', 'swing');
             }

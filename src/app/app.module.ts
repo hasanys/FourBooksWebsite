@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
+import {SafeHtmlPipe} from "./book-view/book-view.component";
 
 const appRoutes: Routes = [
     
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     BookViewComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+	SafeHtmlPipe  
   ],
   imports: [
 	RouterModule.forRoot(

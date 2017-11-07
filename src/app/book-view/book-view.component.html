@@ -60,15 +60,14 @@
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
 	
 		<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
-		<h1 *ngIf="input_data.book || input_data.query">Kitab Al-Kafi: Book # {{c.content_id}}</h1>
+		<h1 *ngIf="input_data.book || input_data.query">Kitab Al-Kafi Book # {{c.content_id}}: {{ c.book_name }}</h1>
 		<h3 *ngIf="input_data.book || input_data.query">Chapter {{c.chapter }}: {{c.chapter_name}}</h3>
 		
 		<div class="hadith-container" > 
 			<span class="nar-text"> {{ c.narrator }}</span><br /><br />
-			<div class="normal-text" *ngFor="let s of c.text.split('\n')">
-				  {{s}} <br/> 
-			</div> 
-			<div>
+				  <p class="normal-text" [innerHTML]="c?.text  | safeHtml"></p>  
+			
+			<div *ngIf="c.chapter != 0 && c.hadith != 0">
 				<a class="subtext" style="float:left; cursor: pointer;cursor: hand" (click)="open_module('http://www.fourshiabooks.com/hadith/' + book_name + '/' + c.content_id + '/' + c.chapter + '/' + c.number)">Share... </a>
 				<span class="subtext" style="float:right">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> 
 			</div><br />

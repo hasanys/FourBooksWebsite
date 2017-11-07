@@ -7,7 +7,15 @@ declare var $: any;
   styleUrls: ['./top-nav-bar.component.css', '../bootstrap/bootstrap.css']
 })
 export class TopNavBarComponent implements OnInit {
-
+  //These just need to be declared for the production buid, they aren't used...
+  searchValue;
+  ExactSearchValue;
+  NarValue;
+  hadithNumberValue;
+  hadNumberValue;
+  chapterNumberValue;
+  bookNumberValue;
+  
   constructor() { }
 
   ngOnInit() {
