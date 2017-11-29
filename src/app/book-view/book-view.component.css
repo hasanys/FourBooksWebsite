@@ -13,7 +13,8 @@
 	text-align: center;
 	display: block;
 	margin-bottom: -30px;
-	
+	padding-right: 25px;
+	padding-left: 25px;
 	
     font-size: 14px;
     font-weight: bold;
@@ -22,7 +23,6 @@
     padding-bottom: 8px;
 	
 }
-
 .intro-text {
 	font-family: 'Nexa' !important;
     font-weight: 600 !important;
@@ -136,21 +136,10 @@ h3 {
     margin-top: 20%;
 }
 
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-
-.coming-soon {	
-	margin: 0 auto;
-	width:100%;
-	transform: translateX(-20px);
-	padding-top:50%;
-}
-}
 .chapter-names {
 	
 }
+
 .nav-items {
 	margin-top:5px;
 	padding-top:5px;
@@ -301,4 +290,31 @@ display: inline;
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+.coming-soon {	
+	margin: 0 auto;
+	width:100%;
+	transform: translateX(-20px);
+	padding-top:50%;
+}
+.pop-up-text {
+	padding-top: 15px;
+    width: 90% !important;
+	margin: 0 !important;
+}
+.nar-text {
+	padding-right: 0px;
+	padding-left: 0px;
+	
+}
+#inputlg {
+	width: 110%;
+}
 }

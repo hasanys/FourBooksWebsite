@@ -43,37 +43,37 @@
 <!-- COMING SOON TEXT -->
 <div *ngIf="content?.length == 0">
 	<div  class="coming-soon">
-		<div *ngIf="!input_data.query" class="inset-text-effect">Coming Soon...</div>
-		<div *ngIf="input_data.query" class="inset-text-effect">No Results Found...</div>
+		<!--<div *ngIf="!input_data.query" class="inset-text-effect">Coming Soon...</div>-->
+		<div *ngIf="input_data.query  || input_data.hadith || this.input_data.number" class="inset-text-effect">No Results Found...</div>
 		<link async href="http://fonts.googleapis.com/css?family=Aladin" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
 	</div>
-	<h4 *ngIf="!input_data.query" style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>
+	<!--<h4 *ngIf="!input_data.query" style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>-->
 </div>
 
 <!-- SEARCH RESULTS HEADING -->
-<div *ngIf="input_data.query && content?.length > 0">
+<div *ngIf="(input_data.query) && content?.length > 0">
 	<p> Displaying {{ content?.length }} results </p>
 </div>
 
 <!-- MAIN CONTENT -->
 <div *ngIf="!input_data.id || input_data.id > 0">
-	<div id="name-wrapper"  *ngFor="let c of content; index as i">
-	
-		<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
-		<h1 *ngIf="input_data.book || input_data.query">Kitab Al-Kafi Book # {{c.content_id}}: {{ c.book_name }}</h1>
-		<h3 *ngIf="input_data.book || input_data.query">Chapter {{c.chapter }}: {{c.chapter_name}}</h3>
+		<div id="name-wrapper"  *ngFor="let c of content; index as i">
 		
-		<div class="hadith-container" > 
-			<span class="nar-text"> {{ c.narrator }}</span><br /><br />
-				  <p class="normal-text" [innerHTML]="c?.text  | safeHtml"></p>  
+			<section *ngIf="content_title?.chapters?.length > 1 && (i == 0 || content[i].chapter != content[i-1].chapter)" [id]="c.chapter" ><div class="header-text"> <h3> {{ c.chapter }} - {{ content[i].chapter_name }} </h3></div></section>
+			<h1 *ngIf="input_data.book || input_data.query">Kitab Al-Kafi Book # {{c.content_id}}: {{ c.book_name }}</h1>
+			<h3 *ngIf="input_data.book || input_data.query">Chapter {{c.chapter }}: {{c.chapter_name}}</h3>
 			
-			<div *ngIf="c.chapter != 0 && c.hadith != 0">
-				<a class="subtext" style="float:left; cursor: pointer;cursor: hand" (click)="open_module('http://www.fourshiabooks.com/hadith/' + book_name + '/' + c.content_id + '/' + c.chapter + '/' + c.number)">Share... </a>
-				<span class="subtext" style="float:right">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> 
-			</div><br />
+			<div class="hadith-container" > 
+				<span class="nar-text" [innerHTML]="c?.narrator | safeHtml"> </span><br /><br />
+					  <p class="normal-text" [innerHTML]="c?.text | safeHtml"></p>  
+				
+				<div *ngIf="c.chapter != 0 && c.hadith != 0">
+					<a class="subtext" style="float:left; cursor: pointer;cursor: hand" (click)="open_module('http://www.fourshiabooks.com/hadith/' + book_name + '/' + c.content_id + '/' + c.chapter + '/' + c.number)">Share... </a>
+					<span class="subtext" style="float:right">Chapter: {{ c.chapter }}, Hadith: {{c.hadith}}, Number: {{ c.number }}  </span> 
+				</div> <br/>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 <!-- SHARE POPUP MODAL -->
 <div id="myModal" class="modal">
