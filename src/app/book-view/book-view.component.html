@@ -32,22 +32,22 @@
 
 <!-- INTRO TEXT -->
 <div *ngIf="input_data.id == 0">
-<div class="hadith-container" > 
 	<div id="name-wrapper"  *ngFor="let c of content; index as i">
-		<h1> {{ c.header }}</h1>
-		<p class="normal-text intro-text "> {{ c.text }} </p>
-	</div>
-	</div><br/>
+		<div class="hadith-container" > 
+			<h1> {{ c.header }}</h1>
+			<p class="normal-text " [innerHTML]="c?.text"></p>
+		</div>
+	</div> <br/>
 </div>
 
-<!-- COMING SOON TEXT -->
+<!-- COMING SOON SLASH NO RESULTS TEXT -->
 <div *ngIf="content?.length == 0">
 	<div  class="coming-soon">
-		<!--<div *ngIf="!input_data.query" class="inset-text-effect">Coming Soon...</div>-->
+		<div *ngIf="!input_data.query && !input_data.hadith && !this.input_data.number" class="inset-text-effect">Coming Soon...</div>
 		<div *ngIf="input_data.query  || input_data.hadith || this.input_data.number" class="inset-text-effect">No Results Found...</div>
 		<link async href="http://fonts.googleapis.com/css?family=Aladin" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
 	</div>
-	<!--<h4 *ngIf="!input_data.query" style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>-->
+	<h4 *ngIf="!input_data.query && !input_data.hadith && !this.input_data.number" style="text-align:center; overflow:hidden; margin-top:5%;" > We are working towards populating our database fully</h4>
 </div>
 
 <!-- SEARCH RESULTS HEADING -->

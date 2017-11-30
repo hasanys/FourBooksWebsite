@@ -8,8 +8,12 @@ if(!empty($_GET['query']))
 {
 	$query=$_GET['query'];
 
-	$data = get_wildcard_search($query);
-	echo json_encode($data);	
+	$by = $_GET['by'];
+	$book = $_GET['book'];
+
+	$data = get_exact_search($query, $by, $book);
+	echo json_encode($data);		
+	
 }
 else
 {

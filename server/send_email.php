@@ -30,6 +30,14 @@ else {
     $result["message"] = $run;
 }
 }
+
+	$to = "yasirshasan@gmail.com"; // <– Put a dedicated email address here
+   $subject = "FourShiaBooks Website Contact Form";
+   $message = "FROM: " . $array['name'] . "\n\n\n RATING: " . $array['rating'] . "\n\n\n " . $array['message'];
+   $from = "sender@emailaddress.here";
+   $headers = "From:" . $array['name'];
+   mail($to,$subject,$message,$headers);
+
 echo json_encode($result);
 
 /*

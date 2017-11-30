@@ -1,11 +1,50 @@
 <h1> {{ book_title }} </h1>
 
 <p [innerHTML]="description?.text"></p>
-<p>For a complete introduction, please read the <strong><a [routerLink]="['/view/', 'al-kafi', '0']" routerLinkActive="active">first section of the book: Introduction.</a></strong></p>.
 
-<h2> Part 1 : AL-’USUL (principles)</h2>
-<p> This part of the book consists of Ahadith on the principles of beliefs and it is called ’Usul al-Kafi 
+<p *ngIf="title.name == 'al-kafi'">For a complete introduction, please read the <strong><a [routerLink]="['/view/', 'al-kafi', '0']" routerLinkActive="active">first section of the book: Introduction.</a></strong>
+<br/>Please also read the <a data-toggle="modal" data-target="#myModal">Note from Translator</a>.</p>
+
+<h2 *ngIf="title.name == 'al-kafi'"> Part 1 : AL-’USUL (principles)</h2>
+<p *ngIf="title.name == 'al-kafi'"> This part of the book consists of Ahadith on the principles of beliefs and it is called ’Usul al-Kafi 
 </p>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Note to Readers</h4>
+        </div>
+        <div class="modal-body">
+          Dear Respected Readers, Please Note the Following: <br/><br/>
+
+			The English Translation of al-Kafi is now, by the will of Allah, in your hands. It was only because of 
+			the beauty of the words of Ahl al-Bayt ‘Alayhim al-Salam that made it all possible. The volume of this 
+			project had become quite large and complex due to two language texts and it was sometimes difficult 
+			to handle. All comments, suggestions and corrections will be very much appreciated. In fact it will be 
+			your participation in the good cause and rewarding in the sight of Allah, most Majestic, most 
+			Glorious. Please send your comments, suggestions or corrections to the following e-mail address: 
+			info@theislamicseminary.org 
+			<br/><br/>
+			With thanks, 
+			<br/><br/>
+			-The Islamic Seminary 
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
 <table class="tg table-hover">
   <tr>
 	<th class="tg-yw4l">Book #</th>
@@ -29,6 +68,7 @@
   
 </table>
 
+<div *ngIf="title.name == 'al-kafi'">
 <h2> PART 2 : AL-FURU (legal)</h2>
 <p> This part consists of Ahadith on Islamic practical laws such as:</p>
 <ul style="text-align:center; list-style: none"> 
@@ -75,11 +115,12 @@ This part, al-Rawdah (the Garden of al-Kafi,) was printed in Tehran 1303/1886 wi
   <tbody>
     <tr class="clickable" [routerLink]="['/view/', 'al-kafi', '36']"> 
 		<td class="tg-j2zy">36</td>
-		<td  class="tg-j2zy"> Al-Rawada </td>
+		<td  class="tg-j2zy"> The Book of Miscellanea </td>
 		<td  class="tg-j2zy">  الروضة </td>
 		<td  class="tg-j2zy"> 8</td>
 	</tr>
   </tbody>
 </table>
+</div>
 <br/>  
 		

@@ -153,6 +153,10 @@ h3 {
 	background-color: rgb(222, 218, 215) !important;
     transition: width 1s;	
 }
+
+#collapsable-parent{
+	z-index: 99; /* Show over everthing else */
+}
 .hover{
 	width: 300%;
 	background-color: green;

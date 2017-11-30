@@ -1,0 +1,48 @@
+p {
+    font-family: 'Open Sans','Trebuchet MS','Arial','sans-serif';
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-weight: normal;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 10px;
+
+}
+
+li {
+    font-family: 'Open Sans','Trebuchet MS','Arial','sans-serif';
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-weight: normal;
+    text-decoration: none;
+
+}
+h1 {
+	font: 600 1.5em/1 'Raleway', sans-serif;
+    color: rgba(0,0,0,.6);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-size: 55px;
+	text-shadow: 2px 2px 3px #b9b9b9;;
+}
+
+h2 {
+	font-weight: bolder;
+	font-size: 25px;
+	text-shadow: 1px 1px 2px #ffffff;
+    text-align: center;
+
+}
+
+.hadith-container {
+	background-color: rgba(255, 238, 235, 0.45);
+	padding: 20px;
+	box-shadow: 10px 10px 5px #666666;
+	margin-top:30px;
+}

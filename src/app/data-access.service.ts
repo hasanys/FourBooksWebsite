@@ -22,19 +22,17 @@ export class DataAccessService {
   search_url = 'http://fourshiabooks.com/server/get_results.php?';
   exact_search_url = 'http://fourshiabooks.com/server/get_exact_results.php?';
   
-  getAlKafiChapterNames(part) : Promise<Array<any>> { 
-	return this.http.get(this.titles_url + 'book=al-kafi&part=' + part)
+  getChapterNames(book, part) : Promise<Array<any>> { 
+	return this.http.get(this.titles_url + 'book=' + book + '&part=' + part)
 					.map((res) => {
-						// some manipulation						
 						return res.json()
 					})
 					.toPromise();
   }
   
-  getAlKafiContent(id) : Promise<Array<any>> { 
-		return this.http.get(this.content_url + 'book=al-kafi&id=' + id)
+  getContent(book, id) : Promise<Array<any>> { 
+		return this.http.get(this.content_url + 'book=' + book + '&id=' + id)
 					.map((res) => {
-						// some manipulation
 						return res.json()
 					}).toPromise();
   }
@@ -42,10 +40,8 @@ export class DataAccessService {
   getAlKafiContentName(id) : Promise<Array<any>> { 
 	return this.http.get(this.title_content_url + 'id=' + id)
 					.map((res) => {
-						// some manipulation
 						return res.json()
-					})
-					.toPromise();
+					}).toPromise();
   }
   
   getHadith(book, content, chapter, number, hadith) : Promise<Array<any>> {
@@ -93,8 +89,8 @@ export class DataAccessService {
 	convertBookName(name) : string {
 		if (name === "al-kafi" || name === "kafi" || name == "Al-Kafi")
 			return "Kitab Al-Kafi";
-		else 
-			return "";
+		else if (name === "al-ahkam" || name === "ahkam" || name == "Al-Ahkam")
+			return "Tahdhib Al-Ahkam";
 	}
 	
 	searchQuery(query) :  Promise<Array<any>> {

@@ -106,11 +106,11 @@
                                     <label class="navigate-label" for="contain">Has the phrase (Exact match)</label>
                                     <input id="search-exact-filter" class="form-control" type="text" [(ngModel)]='ExactSearchValue' name="somethingtestSix"/>
                                   </div>
-                                  <a [routerLink]="['/results', 'book', NarValue, ExactSearchValue]" ><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true">Advanced Search</span></button></a>
+                                  <a [routerLink]="['/results', 'book', NarValue, ExactSearchValue]" ><button type="submit" id="btn-exact" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true">Advanced Search</span></button></a>
                                 </form>
                             </div>
                         </div>
-                        <a [routerLink]="['/results', searchValue]" ><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></a>
+                        <a [routerLink]="['/results', searchValue]" ><button type="button" id="btn-nonexact" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></a>
                     </div>
                 </div>
             </div>

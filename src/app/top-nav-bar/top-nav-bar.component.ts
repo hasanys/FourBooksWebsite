@@ -43,5 +43,9 @@ export class TopNavBarComponent implements OnInit {
   ngAfterViewInit(): void {
 	  //Prevent drop-down closing on click inside
 	$('.dropdown-menu').on("click.bs.dropdown", function (e) { e.stopPropagation(); e.preventDefault(); });
+	
+	$("#search-nonexact").keyup(function(event) { if (event.keyCode === 13) { $("#btn-nonexact").click(); } });
+	$("#search-narrated-filter").keyup(function(event) { if (event.keyCode === 13) { $("#btn-exact").click(); } });
+	$("#search-exact-filter").keyup(function(event) { if (event.keyCode === 13) { $("#btn-exact").click(); } });	
   } 
 }

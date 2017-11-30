@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataAccessService } from './data-access.service'
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,19 @@ import { DataAccessService } from './data-access.service'
 })
 export class AppComponent {
 
-  constructor( private dataService:DataAccessService ) {
+  constructor( private dataService:DataAccessService, private router: Router ) {
 	
   }
   result:Array<Object>; 
 
   ngOnInit() { 
     //this.dataService.myData().then(result => this.result = result);
-	
+	this.router.events.subscribe((evt) => {
+	if (!(evt instanceof NavigationEnd)) {
+		return;
+	}
+	window.scrollTo(0, 0)
+	});
 	
   }
   title = 'app';

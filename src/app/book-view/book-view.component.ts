@@ -41,8 +41,9 @@ export class BookViewComponent implements OnInit {
 	
 	if (this.input_data.id) { //Full view
 		this.book_name = this.input_data.name
-		this.dataService.getAlKafiContentName(this.input_data.id).then(content_title => this.content_title  = content_title );
-		this.dataService.getAlKafiContent(this.input_data.id).then(content => this.content = content);
+		if (this.book_name == "al-kafi")
+			this.dataService.getAlKafiContentName(this.input_data.id).then(content_title => this.content_title  = content_title );
+		this.dataService.getContent(this.book_name, this.input_data.id).then(content => this.content = content);
 		
 	}
 	else if (this.input_data.query) { //Search Results
