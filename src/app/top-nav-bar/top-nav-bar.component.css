@@ -87,7 +87,7 @@ and (max-device-width : 380px) {
         width: 500px;
         margin: 0 auto;
 		margin-top: 7px;
-		margin-left: 53%;
+		margin-left: 39%;
     }
     .dropdown.dropdown-lg {
         position: static !important;
@@ -95,4 +95,20 @@ and (max-device-width : 380px) {
     .dropdown.dropdown-lg .dropdown-menu {
         min-width: 500px;
     }
+}
+
+@media screen and (min-width: 768px)
+and (max-device-width : 1008px) 
+ {
+	    #adv-search {
+        width: 300px;
+		}
+}
+
+@media screen and (min-width: 1009px)
+and (max-device-width : 1025px) 
+ {
+	    #adv-search {
+        width: 400px;
+		}
 }

@@ -52,7 +52,7 @@
 
 <!-- SEARCH RESULTS HEADING -->
 <div *ngIf="(input_data.query) && content?.length > 0">
-	<p> Displaying {{ content?.length }} results </p>
+	<p> Displaying {{ content?.length }} <span *ngIf="content?.length == 250"> of many more </span>results. </p>
 </div>
 
 <!-- MAIN CONTENT -->
