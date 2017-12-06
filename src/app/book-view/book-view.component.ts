@@ -51,14 +51,14 @@ export class BookViewComponent implements OnInit {
 		if (!this.input_data.by) { //Simple search
 			var search_value = $("#search-nonexact").val().trim()
 			this.search_phrase = search_value;
-			this.dataService.searchQuery(search_value).then(content => this.content  = content ).catch(() => "failed").then(() => this.highlight_function() );
+			this.dataService.searchQuery(search_value).then(content => this.content  = content );
 		}
 		else { // Advanced Search
 			var book = $("#search-book-filter").find(":selected").text();
 			var by = $("#search-narrated-filter").val()
 			var phrase = $("#search-exact-filter").val().trim();
 			this.search_phrase = phrase
-			this.dataService.searchExactQuery(book, by, phrase).then(content => this.content  = content ).catch(() => "failed").then(function() { console.log("2 Gets here at the end?") } );
+			this.dataService.searchExactQuery(book, by, phrase).then(content => this.content  = content );
 		}
 		
 	}
@@ -136,34 +136,10 @@ export class BookViewComponent implements OnInit {
 		}
 	  });
 		  }, 1000);
-		  if (this.search_phrase && this.search_phrase.length > 0) {
-			  $.fn.wrapInTag = function(opts) {
-  
-			  var tag = opts.tag || 'strong',
-				  words = opts.words || [],
-				  regex = RegExp("\\b" + words.join('\\b|\\b') + "\\b", 'gi'),
-				  replacement = '<'+ tag +'>$&</'+ tag +'>';
 
-			  return this.html(function() {
-				return $(this).text().replace(regex, replacement);
-			  });
-			};
-		  }
 
 	  }
-	public highlight_function() {
-		 
-		 setTimeout( this.do_highlight, 4000, this.search_phrase)
-	}
-	
-	public do_highlight(phrase) {
-		var res = phrase.split(" ");
-			$('.normal-text').wrapInTag({
-				tag: 'mark',
-				words: res
-			});
-	}
-	
+
 	public open_module(item) {
 		$('#copy-outcome').css('opacity', 0);
 		//$(modal.style.display = "block";
